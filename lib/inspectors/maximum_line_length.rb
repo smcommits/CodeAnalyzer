@@ -1,9 +1,8 @@
 module Inspectors
   class MaximumLineLengthChecker < Base
-
     def initialize(code)
       super
-      @error_type = 'Format/Line_Length' 
+      @error_type = 'Format/Line_Length'
       @message = 'Length of the line is too long'
     end
 

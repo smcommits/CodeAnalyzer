@@ -1,7 +1,6 @@
 module Inspectors
-  class Base
+  class Base < Processor
     @@errors = []
-    attr_reader :errors
     def initialize(code)
       @entire_code = code
       @code_by_line = code_by_line
@@ -32,7 +31,7 @@ module Inspectors
       @code_by_line.length.times do |index|
         tokens << Ripper.lex(@code_by_line[index])
       end
-
+      tokens
     end
 
     def parse_code

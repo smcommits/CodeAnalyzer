@@ -1,2 +1,4 @@
-class Processor < AST::Processor
+module Inspectors
+  class Processor < AST::Processor
+  end
 end
