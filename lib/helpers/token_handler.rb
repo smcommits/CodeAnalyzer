@@ -1,5 +1,4 @@
 class TokenHandler
-
   def initialize(tokens)
     @tokens = tokens
   end
@@ -19,6 +18,4 @@ class TokenHandler
   def column(index)
     @tokens[index][0][1]
   end
-
 end
-
