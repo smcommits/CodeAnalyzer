@@ -26,5 +26,4 @@ class TokenHandler
 
     @tokens[index][0][1]
   end
-
 end
