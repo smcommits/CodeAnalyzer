@@ -1,4 +1,5 @@
 class TokenHandler
+  attr_accessor :tokens
   def initialize(tokens)
     @tokens = tokens
   end
@@ -25,5 +26,17 @@ class TokenHandler
     return if @tokens.empty?
 
     @tokens[index][0][1]
+  end
+
+  def previous_token(index)
+    return if @tokens[index-1] == nil
+
+    @tokens[index - 1]
+  end
+  
+  def next_token(index)
+    return if @tokens[index+1] == nil
+    
+    @tokens[index + 1]
   end
 end

@@ -1,19 +1,16 @@
 module Inspectors
-  class Base < Processor
-    @@errors = []
+
+  @@errors = []
+
+  class Base
+    attr_reader :entire_code
+
     def initialize(code)
       @entire_code = code
       @code_by_line = code_by_line
       @tokenized_code = tokenize
       @tokenized_by_line = tokenize_by_line
-      @parsed_code = parse_code
-    end
-
-    def report
-      @@errors.each do |error|
-        location, type, message = error
-        puts "Location: #{location} | Type: #{type} | Error: #{message}"
-      end
+      @token_handler = TokenHandler.new(@tokenized_code)
     end
 
     private
@@ -33,11 +30,16 @@ module Inspectors
       end
       tokens
     end
+  end
 
-    def parse_code
-      parsed_code = Parser::CurrentRuby.parse(@entire_code)
-      parser = Processor.new
-      parser.process(parsed_code)
+  def submit_report(location, type, message)
+    @@errors << [location, type, message]
+  end
+
+  def report
+    @@errors.each do |error|
+      location, type, message = error
+      puts "Location: #{location} | Type: #{type} | Error: #{message}"
     end
   end
 end

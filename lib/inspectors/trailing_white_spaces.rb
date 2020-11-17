@@ -1,5 +1,5 @@
-module Inspectors
-  class TrailingWhiteSpaces < Base
+  class TrailingWhiteSpaces < Inspectors::Base
+    include Inspectors
     def initialize(code)
       super
       @error_type = 'Format/TrailingWhitespaces'
@@ -10,9 +10,8 @@ module Inspectors
       @tokenized_by_line.length.times do |line|
         token = TokenHandler.new(@tokenized_by_line[line])
         if token.type(-1) == :on_sp
-          @@errors << ["Line:Column : #{line + 1}:#{token.column(-1) + 1}", @error_type, @message]
+          submit_report("Line:Column : #{line + 1}:#{token.column(-1) + 1}", @error_type, @message)
         end
       end
     end
   end
-end

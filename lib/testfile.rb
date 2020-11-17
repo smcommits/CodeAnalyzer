@@ -1,19 +1,20 @@
 def add(x,y)
-  x + y
-  1 +2
-  2==3
-  x+=1
+   x+y
 end
 
-def gibrish
-  "I am 80 charachters long woooooooooooooooooooooooooooooooooooooooooooooooooooooooooo"
-end  
-  
-
-def get
-
+while 5<4
+  print 5
 end
 
-def ad  
+class Name
+  def add(x,y)
+    print(x)
+  end
+end
 
+for i in a
+  print a
+  if
+       a
+  end
 end

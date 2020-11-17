@@ -1,5 +1,5 @@
-module Inspectors
-  class SpaceAroundOperators < Base
+  class SpaceAroundOperators < Inspectors::Base
+    include Inspectors
     def initialize(code)
       super
       @error_type = 'Style/SpaceAroundOperators'
@@ -7,15 +7,13 @@ module Inspectors
     end
 
     def inspect
-      p @tokenized_code
       tokens = TokenHandler.new(@tokenized_code)
       @tokenized_code.each_with_index do |_token, index|
         next unless tokens.type(index) == :on_op
 
-        unless tokens.type(index - 1) == :on_sp && tokens.type(index + 1) == :on_sp
-          @@errors << ["Line:Column : #{tokens.line(index)}:#{tokens.column(index)}", @error_type, @message]
+        unless tokens.type(index - 1) == :on_sp && tokens.type(index+1) == :on_sp
+          submit_report("Line:Column : #{tokens.line(index)}:#{tokens.column(index)}", @error_type, @message)
         end
       end
     end
   end
-end
