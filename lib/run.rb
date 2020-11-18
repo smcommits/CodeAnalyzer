@@ -1,8 +1,12 @@
 require 'ripper'
 require 'parser/current'
+require 'colorize'
+
+require_relative 'inspectors/base'
+require_relative 'inspectors/method_length'
 require_relative 'inspectors/indentation_helper'
 require_relative 'inspectors/indentation'
-require_relative 'inspectors/base'
+require_relative 'inspectors/naming'
 require_relative 'helpers/start_inspect'
 require_relative 'helpers/token_handler'
 require_relative 'helpers/file_handler'
@@ -17,10 +21,7 @@ code = FileHandler.new('/home/sa/top/linter/CodeAnalyzer/lib/testfile.rb').code
 
 source_code = ParseCode.new.parse(code)
 inspection = StartInspection.new(code)
+inspect_parsed_code = StartInspectionParser.new(source_code.ast)
 inspection.start
+inspect_parsed_code.start
 inspection.report
-
-inspec_parsed_code = StartInspectionParser.new(source_code.ast)
-inspec_parsed_code.start
-
-

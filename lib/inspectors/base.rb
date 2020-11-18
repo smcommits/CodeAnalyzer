@@ -1,5 +1,4 @@
 module Inspectors
-
   @@errors = []
 
   class Base
@@ -37,9 +36,14 @@ module Inspectors
   end
 
   def report
-    @@errors.each do |error|
-      location, type, message = error
-      puts "Location: #{location} | Type: #{type} | Error: #{message}"
+    if @@errors.empty?
+      puts 'All is green, no errors'.colorize(:green)
+    else
+      @@errors.each do |error|
+        location, type, message = error
+        puts "\nLocation: #{location} | Type: #{type} | Error: #{message}".colorize(:red)
+      end
+      puts "\nTotal of #{@@errors.length} errors found".colorize(:blue)
     end
   end
 end
