@@ -13,15 +13,16 @@ require_relative 'helpers/file_handler'
 require_relative 'inspectors/maximum_line_length'
 require_relative 'inspectors/trailing_white_spaces'
 require_relative 'inspectors/space_around_op'
-require_relative 'helpers/code_center'
 require_relative 'helpers/parser'
 require_relative 'helpers/start_inspect_parser'
 
-code = FileHandler.new('/home/sa/top/linter/CodeAnalyzer/lib/testfile.rb').code
+def start_analyzing(filename)
+  code = FileHandler.new(filename).code
 
-source_code = ParseCode.new.parse(code)
-inspection = StartInspection.new(code)
-inspect_parsed_code = StartInspectionParser.new(source_code.ast)
-inspection.start
-inspect_parsed_code.start
-inspection.report
+  source_code = ParseCode.new.parse(code)
+  inspection = StartInspection.new(code)
+  inspect_parsed_code = StartInspectionParser.new(source_code.ast)
+  inspection.start
+  inspect_parsed_code.start
+  inspection.report
+end

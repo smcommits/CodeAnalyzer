@@ -32,7 +32,7 @@ class ParseCode
 
     begin
       ast, comments, tokens = parser.tokenize(source_buffer)
-    rescue Parser::SyntaxError
+    rescue Parser::SyntaxError # rubocop:disable  Lint/SuppressedException
     end
 
     SourceHandler.new(source_buffer, ast, tokens, diagnostics, comments)

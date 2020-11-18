@@ -1,5 +1,7 @@
 class MethodLength < AST::Processor
   include Inspectors
+  attr_reader :error_type
+
   def initialize
     super
     @error_type = 'Complexity/MethodLength'

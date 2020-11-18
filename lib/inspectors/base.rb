@@ -1,9 +1,7 @@
 module Inspectors
-  @@errors = []
+  @@errors = [] # rubocop:disable Style/ClassVars
 
   class Base
-    attr_reader :entire_code
-
     def initialize(code)
       @entire_code = code
       @code_by_line = code_by_line

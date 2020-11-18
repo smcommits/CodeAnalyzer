@@ -1,6 +1,8 @@
 class Indentation < AST::Processor
   include Inspectors
 
+  attr_reader :message, :errors, :error_type
+
   def initialize
     super
     @error_type = 'Style/IncorrectIndentation'
