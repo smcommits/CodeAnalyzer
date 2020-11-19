@@ -30,7 +30,6 @@ describe MethodLength do
   end
 end
 
-
 # MaximumLineLengthChecker
 describe MaximumLineLengthChecker do
   let(:code) { "def add(x,y)\nx+yf" }
@@ -48,17 +47,15 @@ describe MaximumLineLengthChecker do
   end
 end
 
-#NamingChecker
+# NamingChecker
 
 describe NamingChecker do
   let(:code) { "VARIABLENAME = 'Hello, world'" }
   let(:checker) { NamingChecker.new }
   let(:processed) { checker.processed(code) }
   describe '#.error_type' do
-    it "returns the error type if variable name is not correct" do
-      expect(checker.error_type).to eql ('Style/IncorrectNaming')
+    it 'returns the error type if variable name is not correct' do
+      expect(checker.error_type).to eql('Style/IncorrectNaming')
     end
   end
 end
-
-

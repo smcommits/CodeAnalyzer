@@ -27,5 +27,4 @@ describe TokenHandler do
       expect(token_handler.column(2)).to eql(2)
     end
   end
-
 end
