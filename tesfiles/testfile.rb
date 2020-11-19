@@ -1,3 +1,4 @@
+# rubocop:disable all
 def add(x, y)
     x+y
 end

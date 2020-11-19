@@ -1,5 +1,6 @@
 require_relative 'run'
 
+# Indentation
 describe Indentation do
   let(:code) { "def add(x,y)\nx+y" }
   let(:checker) { Indentation.new }
@@ -17,6 +18,7 @@ describe Indentation do
   end
 end
 
+# MethodLength
 describe MethodLength do
   let(:code) { "def add(x,y)\nx+y\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nend" }
   let(:checker) { MethodLength.new }
@@ -28,6 +30,8 @@ describe MethodLength do
   end
 end
 
+
+# MaximumLineLengthChecker
 describe MaximumLineLengthChecker do
   let(:code) { "def add(x,y)\nx+yf" }
   let(:checker) { MaximumLineLengthChecker.new(code) }
@@ -43,3 +47,18 @@ describe MaximumLineLengthChecker do
     end
   end
 end
+
+#NamingChecker
+
+describe NamingChecker do
+  let(:code) { "VARIABLENAME = 'Hello, world'" }
+  let(:checker) { NamingChecker.new }
+  let(:processed) { checker.processed(code) }
+  describe '#.error_type' do
+    it "returns the error type if variable name is not correct" do
+      expect(checker.error_type).to eql ('Style/IncorrectNaming')
+    end
+  end
+end
+
+

@@ -1,5 +1,7 @@
 class NamingChecker < AST::Processor
   include Inspectors
+
+  attr_reader :message, :error_type
   def initialize
     super
     @snake_case = /^@?[\da-z_]+[!?=]?$/

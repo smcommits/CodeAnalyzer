@@ -37,7 +37,6 @@ class TokenHandler
 
   def next_token(index)
     return if @tokens[index + 1].nil?
-
     @tokens[index + 1]
   end
 end
